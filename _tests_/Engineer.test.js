@@ -8,12 +8,19 @@ test("Create engineer", () => {
     expect(engineer.getRole()).toBe('Engineer');
 });
 
-test('GitHub username', () => {
-    const GitHub = 'JDavid337@';
-    const engineer = new Engineer('name', 'id', 'email', gitHubName, 'role');
-    expect(engineer.getGitHub()).toBe(gitHubName);
+/*test('GitHub username', () => {
+    const github = 'JDavid337';
+    const engineer = new Engineer('name', 'id', 'email', GitHub, 'role');
+    expect(engineer.getGitHub()).toBe(github);
 });
+*/
 
+test("Github username", () => {
+    const github = "killjoyangel2";
+    const engineer = new Engineer("name", "id", "email", github, "role");
+    expect(engineer.getgithub()).toBe(github);
+});
+/*
 test('engineer name', () => {
     const name = 'John';
     const engineer = new Engineer(name, 'id', 'email', 'gitHubName', 'role');
@@ -21,7 +28,6 @@ test('engineer name', () => {
 });
 
 test('GitHub id', () => {
-    const GitHub = 'JDavid337@';
     const engineer = new Engineer('name', id, 'email', 'gitHubName', 'role');
     expect(engineer.id()).toBe(id);
 });
@@ -36,4 +42,4 @@ test('GitHub roll', () => {
     const GitHub = 'JDavid337@';
     const engineer = new Engineer('name', 'id', 'email', 'gitHubName', role);
     expect(engineer.role()).toBe(role);
-});
+});*/

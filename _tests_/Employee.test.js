@@ -9,18 +9,18 @@ test("Create employee", () => {
 
 test("Create employee name", () => {
     const name = "Jared"
-    const employee = new Employee(name, "role", "id", "email")
+    const employee = new Employee("role", name, "id", "email")
     expect(employee.getName()).toBe(name)
 })
 
 test("Create employee ID", () => {
-    const name = "1"
+    const id = "1";
     const employee = new Employee("name", "role", id, "email")
     expect(employee.getId()).toBe(id)
 })
 
 test("Create employee email", () => {
-    const name = "email@email.com"
+    const email = "email@email.com"
     const employee = new Employee("name", "role", "id", email)
     expect(employee.getEmail()).toBe(email)
 })

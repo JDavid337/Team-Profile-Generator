@@ -9,6 +9,12 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
+/*
+const OUTPUT_DIR = path.resolve(__dirname, 'output');
+const outputPath = path.join(OUTPUT_DIR, "team.html");
+const render = require("./lib/htmlRenderer");
+*/
+
 const inquirer = require("inquirer");
 const generateHTML = require("./src/generateHTML");
 const { inherits } = require("util");
@@ -16,16 +22,17 @@ const { inherits } = require("util");
 // ask for user input to go into the cards
 
 const MyTeam = [];
-
-const queManager = [
+function app() {
+    function getManager() {
+        inquirer.prompt ([
     {
         type: "input",
-        name: "name",
+        name: "managerName",
         message: "What is your team manager's name?",
     },
     {
         type: "input",
-        name: "ID",
+        name: "managerID",
         message: "What is your team manager's ID number?",
     },
     {
@@ -51,7 +58,9 @@ const queManager = [
         message: "Do you want to add a member to your team?  If yes, select their role.",
         choices: ["Engineer", "Intern", "Team is full"],
     },
-];
+    ])
+    }
+};
 
 const queEngineer = () => {
 [

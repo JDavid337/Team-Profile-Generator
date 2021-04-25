@@ -1,5 +1,8 @@
 // generate the team by firing functions which outputs HTML in a string
-const generateTeam = (teamMembers) => {
+const generateTeam = teamMembers => {
+    const generateManager = manager => {
+
+    
 return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,12 +30,19 @@ return `<!DOCTYPE html>
             </div>
         </div>
     </div>
+    <div class="container">
+    <div class="row">
+        <div class="team-area col-12 d-flex justify-content-center">
+            ${generateTeam(team[0])};
+        </div>
+    </div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-JEW9xMcG8R=pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
     crossorigin="anonymous"></script>
 </body>
 </html>`
-};
+}};
 
 const generateManager = (manager) => {
     return `<div class="card">
@@ -50,4 +60,14 @@ const generateManager = (manager) => {
 
 // };
 
-module.exports = generateTeam;
+/* const generateManager = manager => {
+    return `<div>HTML ${manager.getName()}</div>`
+}
+module.exports = team => {
+    return ' '
+}
+*/
+
+module.exports = generateTeam => {
+    return
+}
