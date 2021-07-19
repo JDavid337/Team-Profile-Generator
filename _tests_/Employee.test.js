@@ -3,25 +3,25 @@ const { ecNormalize } = require("sshpk");
 const Employee = require("../lib/Employee");
 
 test("Create employee", () => {
-    const employee = new Employee("name", "role", "id", "email")
+    const employee = new Employee("name", "id", "email")
     expect(typeof(employee)).toBe("object")
 })
 
 test("Create employee name", () => {
     const name = "Jared"
-    const employee = new Employee("role", name, "id", "email")
+    const employee = new Employee( name, "id", "email")
     expect(employee.getName()).toBe(name)
 })
 
 test("Create employee ID", () => {
     const id = "1";
-    const employee = new Employee("name", "role", id, "email")
+    const employee = new Employee("name",  id, "email")
     expect(employee.getId()).toBe(id)
 })
 
 test("Create employee email", () => {
     const email = "email@email.com"
-    const employee = new Employee("name", "role", "id", email)
+    const employee = new Employee("name",  "id", email)
     expect(employee.getEmail()).toBe(email)
 })
 

@@ -4,25 +4,23 @@ const fs = require("fs");
 const path = require("path");
 
 const Employee = require("./lib/Employee");
-const Team = new Employee();
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-/*
+
 const OUTPUT_DIR = path.resolve(__dirname, 'output');
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-const render = require("./lib/htmlRenderer");
-*/
+const generateHTML = require("./lib/htmlRenderer");
+
 
 const inquirer = require("inquirer");
-const generateHTML = require("./src/generateHTML");
-const { inherits } = require("util");
+//const generateHTML = require("./TemplateFunctions/template");
+
 
 // ask for user input to go into the cards
 
 const MyTeam = [];
-function app() {
     function getManager() {
         inquirer.prompt ([
     {
@@ -32,7 +30,7 @@ function app() {
     },
     {
         type: "input",
-        name: "managerID",
+        name: "managerId",
         message: "What is your team manager's ID number?",
     },
     {
@@ -52,93 +50,108 @@ function app() {
         name: "officeNumber",
         message: "What is your team manager's office number?",
     },
-    {
+
+        ]).then(response => {
+            const manager = new Manager(response.managerName, response.managerId, response.managerEmail, response.officeNumber);
+            MyTeam.push(manager);
+            addingNewMember();
+        })
+    }
+function addingNewMember(){
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "team",
+            message: "Do you want to add a member to your team?  If yes, select their role.",
+            choices: ["Engineer", "Intern", "Team is full"],
+        },
+    ]).then(response => {
+        if (response.team === 'Manager') {
+            getManager();
+        } else if (response.team === "Engineer") {
+            getEngineer();
+        } else if (response.team === "Intern") {
+            getIntern();
+        } else {
+            finishTeam();
+            
+        }
+    });
+}
+/*    {
         type: "list",
         name: "team",
-        message: "Do you want to add a member to your team?  If yes, select their role.",
+        message: "Do you want to add a member to your team?  If yes, select their response.team.",
         choices: ["Engineer", "Intern", "Team is full"],
-    },
-    ])
     }
-};
+} */
 
-const queEngineer = () => {
-[
+const getEngineer = () => {
+    inquirer.prompt([
+
     {
         type: "input",
-        name: "name",
+        name: "engineerName",
         message: "What is your engineer's name?",
     },
     {
         type: "input",
-        name: "ID",
+        name: "engineerID",
         message: "What is your engineer's ID number?",
     },
     {
         type: "input",
-        name: "email",
+        name: "engineerEmail",
         message: "What is your engineer's email?",
     },
     {
         type: "input",
-        name: "gitHub",
+        name: "engineerGitHub",
         message: "What is your engineer's GitHub username?",
     },
-    {
-        type: "list",
-        name: "team",
-        message: "Do you want to add a member to your team?  If yes, select their role.",
-        choices: ["Engineer", "Intern", "Team is full"],
-    },
-];
 
+]).then(response => {
+    const engineer = new Engineer(response.engineerName, response.engineerID, response.engineerEmail, response.engineerGitHub);
+    MyTeam.push(engineer);
+            addingNewMember();
+})
+}
 
-const queIntern = () => {
-[
+const getIntern = () => {
+    inquirer.prompt([
     {
         type: "input",
-        name: "name",
+        name: "internName",
         message: "What is your intern's name?",
     },
     {
         type: "input",
-        name: "ID",
+        name: "internID",
         message: "What is your intern's ID number?",
     },
     {
         type: "input",
-        name: "email",
+        name: "internEmail",
         message: "What is your intern's email?",
     },
     {
         type: "input",
-        name: "school",
+        name: "internSchool",
         message: "What school does your intern currently attend?",
     },
-    {
-        type: "list",
-        name: "team",
-        message: "Do you want to add a member to your team?  If yes, select their role.",
-        choices: ["Engineer", "Intern", "Team is full"],
-    },
-]
-.then((answers) => {
-    MyTeam.push(
-        new Engineer(answers.name, answers.id, answers.email, answers.GitHub)
-    );
-    if (answers.team === "Engineer") {
-        queEngineer();
-    } else if (answers.team === "Intern") {
-        queIntern();
-    } else {
-        let answers = generateHTML(MyTeam);
-        fs.writeFileSync("team.html", "answers", "utf-8");
-    }
-});
-};
 
-init();
+]).then(response => {
+    const intern = new Intern(response.internName, response.internID, response.internEmail, response.internSchool);
+    MyTeam.push(intern);
+    addingNewMember();
 
+})
+}
+function finishTeam () {
+    let answers = generateHTML(MyTeam);
+        fs.writeFileSync("team.html", answers, "utf-8");
 }
 
-// dynamically create employee cards
+//init(generateHTML(MyTeam));
+
+getManager()

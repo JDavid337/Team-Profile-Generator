@@ -4,42 +4,35 @@ const Engineer = require('../lib/Engineer');
 
 // TextDecoderStream('Updated role with Engineer.', () => {
 test("Create engineer", () => {
-    const engineer = new Engineer('name', 'role', 'id', 'email', 'github')
+    const engineer = new Engineer('name', 'id', 'email', 'github')
     expect(engineer.getRole()).toBe('Engineer');
 });
 
-/*test('GitHub username', () => {
-    const github = 'JDavid337';
-    const engineer = new Engineer('name', 'id', 'email', GitHub, 'role');
-    expect(engineer.getGitHub()).toBe(github);
-});
-*/
-
 test("Github username", () => {
     const github = "killjoyangel2";
-    const engineer = new Engineer("name", "id", "email", github, "role");
-    expect(engineer.getgithub()).toBe(github);
+    const engineer = new Engineer("name", "id", "email", github);
+    expect(engineer.getGithub()).toBe(github);
 });
-/*
+
 test('engineer name', () => {
     const name = 'John';
-    const engineer = new Engineer(name, 'id', 'email', 'gitHubName', 'role');
-    expect(engineer.name()).toBe(name);
+    const engineer = new Engineer(name, 'id', 'email', 'gitHubName');
+    expect(engineer.getName()).toBe(name);
 });
 
 test('GitHub id', () => {
-    const engineer = new Engineer('name', id, 'email', 'gitHubName', 'role');
-    expect(engineer.id()).toBe(id);
+    const id = 1
+    const engineer = new Engineer('name', id, 'email', 'gitHubName');
+    expect(engineer.getId()).toBe(id);
 });
 
 test('GitHub email', () => {
-    const GitHub = 'JDavid337@';
-    const engineer = new Engineer('name', 'id', email, 'gitHubName', 'role');
-    expect(engineer.email()).toBe(email);
+    const email = 'JDavid337@';
+    const engineer = new Engineer('name', 'id', email, 'gitHubName');
+    expect(engineer.getEmail()).toBe(email);
 });
 
 test('GitHub roll', () => {
-    const GitHub = 'JDavid337@';
-    const engineer = new Engineer('name', 'id', 'email', 'gitHubName', role);
-    expect(engineer.role()).toBe(role);
-});*/
+    const engineer = new Engineer('name', 'id', 'email', 'gitHubName');
+    expect(engineer.getRole()).toBe('Engineer');
+});

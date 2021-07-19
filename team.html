@@ -1,9 +1,4 @@
-// generate the team by firing functions which outputs HTML in a string
-const generateTeam = teamMembers => {
-    const generateManager = manager => {
-
-    
-return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,48 +21,34 @@ return `<!DOCTYPE html>
     <div class="container">
         <div class="row">
             <div class="team-area col-12 d-flex justify-content-center">
-                ${generateManager(teamMembers[0])};
+                <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Eric Thumbull</h2>
+            <p class="card-text">1</p>
+            <p class="card-text">Thumbull@gmail.com</p>
+            <p class="card-text">555-123-4567</p>
+        </div>
+    </div><div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Tim Meadows</h2>
+            <p class="card-text">2</p>
+            <p class="card-text">Meadows@gmail.com</p>
+            <p class="card-text">TimMeadows</p>
+        </div>
+    </div><div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Chris Pratt</h2>
+            <p class="card-text">3</p>
+            <p class="card-text">Pratt@gmail.com</p>
+            <p class="card-text">LSU</p>
+        </div>
+    </div>
             </div>
         </div>
     </div>
-    <div class="container">
-    <div class="row">
-        <div class="team-area col-12 d-flex justify-content-center">
-            ${generateTeam(team[0])};
-        </div>
-    </div>
-</div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-JEW9xMcG8R=pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
     crossorigin="anonymous"></script>
 </body>
-</html>`
-}};
-
-const generateManager = (manager) => {
-    return `<div class="card">
-        <div class="card-header">
-            <h2 class="card-title">${manager.getName()}</h2>
-        </div>
-    </div>`
-};
-
-// const generateEngineer = engineer => {
-
-// };
-
-// const generateIntern = intern => {
-
-// };
-
-/* const generateManager = manager => {
-    return `<div>HTML ${manager.getName()}</div>`
-}
-module.exports = team => {
-    return ' '
-}
-*/
-
-module.exports = generateTeam => {
-    return
-}
+</html>

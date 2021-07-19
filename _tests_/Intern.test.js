@@ -9,7 +9,7 @@ test("Create Intern", () => {
 
 test("Intern's school", () => {
     const School = "School"
-    const intern = new Intern('name', 'role', 'id', 'email', School);
+    const intern = new Intern('name', 'role', 'id', School, 'email');
     expect(intern.getSchool()).toBe('School');
 });
 /*
